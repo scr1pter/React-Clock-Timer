@@ -36,14 +36,14 @@ class Clock extends React.Component {
                   indicating: "Session",
                   minutes: this.state.sessionLength, 
                   breakFlag: false });
-                  document.getElementById("beep").play(); // jQuery tropos na paikseis enan hxo. Epistrefei pinaka gia auto bazw to [0]
+                  $('audio#beep')[0].play(); // jQuery tropos na paikseis enan hxo. Epistrefei pinaka gia auto bazw to [0]
             }
             else{ // alliws an einai false shmainei pws prepei twra na ginei break gia auto ta lepta sto setState einai osa grafei to breakLength, omoiws breakFlag ginetai true kai indicating ginetai Break wste na xeroume oti twra ksekinaei to break
                 this.setState({
                   indicating: "Break",
                   minutes: this.state.breakLength, 
                   breakFlag: true });
-                  document.getElementById("beep").play();
+                  $('audio#beep')[0].play();
             }
         }
         else if(seconds === 0){ // an ta seconds einai 0 kai ta minutes oxi tote ta seconds ginontai 59 kai meiwnw ta minutes kata 1
@@ -79,8 +79,8 @@ class Clock extends React.Component {
         breakFlag: false
       });
       clearInterval(this.state.intervalFlag); // stamataw to countdown
-      document.getElementById("beep").pause();// kanw pause ton hxo
-      document.getElementById("beep").currentTime = 0;// kanw rewind ton hxo sthn arxh
+      $('audio#beep')[0].pause();// kanw pause ton hxo
+      $('audio#beep')[0].currentTime = 0;// kanw rewind ton hxo sthn arxh
     }
     if(action == "bdecr") { // otan pataw to koubi - sto breakLength tote to meiwnw kata 1
       if(this.state.breakLength>1)
